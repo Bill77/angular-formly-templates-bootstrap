@@ -1,22 +1,24 @@
-<div class="form-group"
-     ng-class="{'has-error': options.formField.$invalid}">
+<div class="form-group" ng-class="{'has-error': options.formField.$invalid && options.formField.$dirty}">
 	<label for="{{id}}">
 		{{options.label || 'Text'}}
 		{{options.required ? '*' : ''}}
 	</label>
 	<input type="text"
-	       class="form-control"
-	       id="{{id}}"
-	       formly-dynamic-name="options.key"
-	       formly-custom-validation="options.validators"
-	       placeholder="{{options.placeholder}}"
-	       aria-describedby="{{id}}_description"
-	       ng-required="options.required"
-	       ng-disabled="options.disabled"
-	       ng-model="result[options.key || index]">
-	<p id="{{id}}_description"
-	   class="help-block"
-	   ng-if="options.description">
-		{{options.description}}
-	</p>
+		   class="form-control"
+		   id="{{id}}"
+           formly-dynamic-name="options.key"
+           formly-custom-validation="options.validators"
+		   placeholder="{{options.placeholder}}"
+		   aria-describedby="{{id}}_description"
+		   ng-required="options.required"
+		   ng-disabled="options.disabled"
+		   ng-model="result[options.key || index]"
+           ng-minlength="{{options.minlength}}">
+   <p id="{{id}}_description" class="help-block" ng-if="options.description">{{options.description}}</p>
+    <ng-messages for="options.formField.$error" ng-if="options.formField.$dirty || options.formField.$submitted">
+        <ng-message when="text">This field must be a text.</ng-message>
+        <ng-message when="required">This field is required.</ng-message>
+        <ng-message when="minlength">The text entered is too short.</ng-message>
+        <ng-message when="maxlength">The text entered is too long.</ng-message>
+    </ng-messages>
 </div>
