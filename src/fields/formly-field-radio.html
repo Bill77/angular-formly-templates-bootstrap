@@ -22,5 +22,8 @@
 		   ng-if="option.description">
 			{{option.description}}
 		</p>
+        <ng-messages for="options.formField.$error" ng-if="options.formField.$dirty || options.formField.$submitted">
+            <ng-message when="required">The selection field is required.</ng-message>            
+        </ng-messages>
 	</div>
 </div>

@@ -151,7 +151,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', [
 		'jshint',
-		'mocha',
+		//'mocha',
 		'clean:tmp',
 		'copy:build',
 		'ngtemplates',

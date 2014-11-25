@@ -13,11 +13,14 @@
 		   ng-required="options.required"
 		   ng-disabled="options.disabled"
 		   ng-model="result[options.key || index]"
-           ng-minlength="{{options.minlength}}">
+           ng-minlength="{{options.minlength}}"
+           ng-maxlength="{{options.maxlength}}"
+           ng-pattern="{{options.pattern}}">
    <p id="{{id}}_description" class="help-block" ng-if="options.description">{{options.description}}</p>
     <ng-messages for="options.formField.$error" ng-if="options.formField.$dirty || options.formField.$submitted">
         <ng-message when="text">This field must be a text.</ng-message>
         <ng-message when="required">This field is required.</ng-message>
+        <ng-message when="pattern">This field does not match the specified pattern.</ng-message>
         <ng-message when="minlength">The text entered is too short.</ng-message>
         <ng-message when="maxlength">The text entered is too long.</ng-message>
     </ng-messages>

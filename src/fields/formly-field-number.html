@@ -21,10 +21,10 @@
    <p id="{{id}}_description" class="help-block" ng-if="options.description">{{options.description}}</p>    
     <ng-messages for="options.formField.$error" ng-if="options.formField.$dirty || options.formField.$submitted">
         <ng-message when="number">This field must be a number.</ng-message>
-        <ng-message when="required">This field is required.</ng-message>
-        <ng-message when="minlength">The number entered is too short.</ng-message>
-        <ng-message when="maxlength">The number entered is too long.</ng-message>
-        <ng-message when="min">The number entered is too small.</ng-message>
-        <ng-message when="max">The number entered is too large.</ng-message>
+        <ng-message when="required">This number is required.</ng-message>
+        <ng-message when="minlength">The number entered must be greater than or equal to {{options.minlength}} digits.</ng-message>
+        <ng-message when="maxlength">The number entered must be less than or equal {{options.maxlength}} digits.</ng-message>
+        <ng-message when="min">The number entered must be greater than or equal to {{options.min}}.</ng-message>
+        <ng-message when="max">The number entered must be less than or equal to {{options.max}}.</ng-message>
     </ng-messages>
 </div>

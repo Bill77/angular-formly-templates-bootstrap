@@ -17,4 +17,7 @@
 	   ng-if="options.description">
 		{{options.description}}
 	</p>
+    <ng-messages for="options.formField.$error" ng-if="options.formField.$dirty || options.formField.$submitted">
+        <ng-message when="required">This field is required.</ng-message>        
+    </ng-messages>
 </div>
